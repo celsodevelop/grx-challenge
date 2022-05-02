@@ -2,13 +2,13 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "rootDir": "./src",
-    "outDir": "./dist",
+    "rootDir": "src",
+    "outDir": "dist",
     "esModuleInterop": true,
     "strict": true
   },
   "exclude": [
     "node_modules",
-    "grx-reactui"
+    "react_client"
   ],
 }
