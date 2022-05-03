@@ -11,10 +11,9 @@ const startServer = (app: Express) => {
   });
 };
 
+// Permite o encerramento não abrupto do servidor ao receber o comando
+// de encerramento do shell tentando responder às requisições correntes
 process.on('SIGTERM', () => {
-  // Permite o encerramento não abrupto do servidor ao receber o comando
-  // de encerramento do shell tentando responder às requisições correntes
-
   server.close(() => {
     console.log('Process terminated by SIGTERM');
   });

@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import cors, { CorsOptions } from 'cors';
 import { StatusCodes } from 'http-status-codes';
 import startServer from './bin';
+import routes from './routes';
 
 const app = express();
 
@@ -31,9 +32,7 @@ app.use(bodyParser.json());
 
 // ROUTES
 
-app.get('/', (req, res) => {
-  res.status(StatusCodes.OK).send('GRX Back-end Challenge');
-});
+app.use('/answer', routes.answer);
 
 // START LISTEN SERVER
 
