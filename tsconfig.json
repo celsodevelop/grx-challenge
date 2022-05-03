@@ -1,12 +1,14 @@
 {
-  "ts-node-dev": {
+  "ts-node": {
     "compilerOptions": {
-      "module": "esnext"
+      "module": "commonjs",
+      "target": "es2020",
+
     }
   },
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
+    "module": "esnext",
+    "target": "es2020",
     "rootDir": "src",
     "outDir": "dist",
     "allowJs": true,

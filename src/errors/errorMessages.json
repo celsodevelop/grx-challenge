@@ -1,7 +1,4 @@
 {
-  "INCORRECT_AUTH": "Invalid fields",
-  "BAD_JWT": "Expired or invalid token",
-  "MISSING_AUTH": "Token not found",
-  "ADMIN_ONLY": "Admin only",
-  "INTERNAL_ERROR": "Internal error"
+  "INTERNAL_ERROR": "Sorry, An Internal error have been occurred.",
+  "FILE_OPEN_ERROR": "Error when open file."
 }
