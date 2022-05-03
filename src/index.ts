@@ -3,9 +3,9 @@ import express, {
 } from 'express';
 import bodyParser from 'body-parser';
 import cors, { CorsOptions } from 'cors';
-import { StatusCodes } from 'http-status-codes';
 import startServer from './bin';
 import routes from './routes';
+import errorMiddleware from './errors/errorMiddleware';
 
 const app = express();
 
@@ -23,7 +23,7 @@ app.use((_req: Request, res: Response, next: NextFunction) => {
   // Evita ataques de enumeração para extrair informações,
   // escondendo 'Express 4.18.1' do header das responses
 
-  res.header('X-powered-by', 'Blood, sweat, and tears.');
+  res.header('X-powered-by', 'Sweat, and tears.');
   next();
 });
 
@@ -33,6 +33,10 @@ app.use(bodyParser.json());
 // ROUTES
 
 app.use('/answer', routes.answer);
+
+// ERROR MIDDLEWARE
+
+app.use(errorMiddleware);
 
 // START LISTEN SERVER
 

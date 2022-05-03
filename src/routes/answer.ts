@@ -1,7 +1,7 @@
-import { Router as answer } from 'express';
+import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-const router = answer();
+const router = Router();
 
 router.post('/', (req, res) => {
   res.status(StatusCodes.OK).end();
