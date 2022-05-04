@@ -6,6 +6,9 @@ const DATA_STORAGE_PATH = '../../data/answers.txt';
 
 const fileConnection = async () => {
   try {
+    // return await dentro do try-catch para capturar erro do file system
+    // e mandar via log do servidor por segurança contra exposição da infra
+
     return await open(DATA_STORAGE_PATH, 'a+');
   } catch {
     return errorHandler(new Error(errorMessages.FILE_OPEN_ERROR));

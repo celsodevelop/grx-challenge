@@ -13,6 +13,4 @@ const createAnswer = async (data: string) => {
   }
 };
 
-export default {
-  createAnswer,
-};
+export default createAnswer;
