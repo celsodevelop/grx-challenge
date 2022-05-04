@@ -2,15 +2,15 @@ import { open } from 'fs/promises';
 import errorMessages from '../errors/errorMessages.json';
 import errorHandler from '../errors/errorHandler';
 
-const DATA_STORAGE_PATH = '../../data/answers.txt';
+const DATA_STORAGE_PATH = 'data/answers.txt';
 
-const fileConnection = async () => {
+const fileConnection = async (flag: string) => {
   try {
     // return await dentro do try-catch para capturar erro do file system
     // e mandar via log do servidor por segurança contra exposição da infra
 
-    return await open(DATA_STORAGE_PATH, 'a+');
-  } catch {
+    return await open(DATA_STORAGE_PATH, flag);
+  } catch (error) {
     return errorHandler(new Error(errorMessages.FILE_OPEN_ERROR));
   }
 };

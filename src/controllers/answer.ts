@@ -5,12 +5,13 @@ import createAnswerSvc from '../services/answer';
 import { Answer } from '../types';
 
 const createAnswerCtrl: RequestHandler = (async (req, res, next) => {
-  const {
-    question1, question2, question3, question4,
-  } = req.body as Answer;
+  const { question1, question2, question3, question4 } = req.body as Answer;
   try {
     await createAnswerSvc({
-      question1, question2, question3, question4,
+      question1,
+      question2,
+      question3,
+      question4,
     });
     return res
       .status(StatusCodes.OK)
@@ -19,7 +20,7 @@ const createAnswerCtrl: RequestHandler = (async (req, res, next) => {
     if (error instanceof AppError) {
       return next(error);
     }
-    return next(new Error('Erro interno ao guardar respostas'));
+    return next(new Error('Erro interno ao armazenar respostas'));
   }
 }) as RequestHandler;
 

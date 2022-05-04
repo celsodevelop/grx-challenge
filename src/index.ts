@@ -1,6 +1,4 @@
-import express, {
-  NextFunction, Request, RequestHandler, Response,
-} from 'express';
+import express, { NextFunction, Request, RequestHandler, Response } from 'express';
 import bodyParser from 'body-parser';
 import cors, { CorsOptions } from 'cors';
 import startServer from './bin';

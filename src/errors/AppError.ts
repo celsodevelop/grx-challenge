@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 
 type IAppError = Error & {
-  code: number
+  code: number;
 };
 
 // Classe para erros externos personalizados com contenção da

@@ -1,3 +1,3 @@
 export type Answer = {
-  [question: string]: string
+  [question: string]: string;
 };

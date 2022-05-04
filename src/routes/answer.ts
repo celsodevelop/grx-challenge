@@ -1,10 +1,8 @@
 import { Router } from 'express';
-import { StatusCodes } from 'http-status-codes';
+import createAnswerCtrl from '../controllers/answer';
 
 const router = Router();
 
-router.post('/', (req, res) => {
-  res.status(StatusCodes.OK).end();
-});
+router.post('/', createAnswerCtrl);
 
 export default router;
