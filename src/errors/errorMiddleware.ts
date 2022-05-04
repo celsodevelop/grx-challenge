@@ -2,7 +2,7 @@ import { ErrorRequestHandler } from 'express';
 import AppError from './AppError';
 import errorHandler from './errorHandler';
 
-const errorMiddleware: ErrorRequestHandler = (err: AppError, _req, res) => {
+const errorMiddleware: ErrorRequestHandler = (err: AppError | Error, _req, res) => {
   errorHandler(err, res);
 };
 
