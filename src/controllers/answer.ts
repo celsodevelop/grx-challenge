@@ -2,10 +2,7 @@ import { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import AppError from '../errors/AppError';
 import createAnswerSvc from '../services/answer';
-
-type Answer = {
-  [index: string]: string
-};
+import { Answer } from '../types';
 
 const createAnswerCtrl: RequestHandler = (async (req, res, next) => {
   const {
