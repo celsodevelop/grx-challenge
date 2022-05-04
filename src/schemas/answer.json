@@ -3,25 +3,19 @@
   "properties": {
     "question1": {
       "enum": ["yes", "no"],
-      "nullable": false,
       "errorMessage": {
-        "nullable": "\"question1\" is not allowed to be empty",
         "enum": "\"question1\" is not allowed to be nothing but yes or no"
       }
     },
     "question2": {
       "enum": ["yes", "no"],
-      "nullable": false,
       "errorMessage": {
-        "nullable": "\"question2\" is not allowed to be empty",
         "enum": "\"question2\" is not allowed to be nothing but 'yes' or 'no'"
       }
     },
     "question3": {
       "enum": ["yes", "no", "idk", "now"],
-      "nullable": false,
       "errorMessage": {
-        "nullable": "\"question3\" is not allowed to be empty",
         "enum": "\"question3\" is not allowed to be nothing but 'yes', 'no', 'idk' or 'now'"
       }
     },

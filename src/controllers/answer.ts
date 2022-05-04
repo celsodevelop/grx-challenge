@@ -1,6 +1,5 @@
 import { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import AppError from '../errors/AppError';
 import createAnswerSvc from '../services/answer';
 import { Answer } from '../types';
 
@@ -17,10 +16,7 @@ const createAnswerCtrl: RequestHandler = (async (req, res, next) => {
       .status(StatusCodes.OK)
       .json({ message: 'Suas respostas foram armazenadas com sucesso!' });
   } catch (error) {
-    if (error instanceof AppError) {
-      return next(error);
-    }
-    return next(new Error('Erro interno ao armazenar respostas'));
+    return next(error);
   }
 }) as RequestHandler;
 
