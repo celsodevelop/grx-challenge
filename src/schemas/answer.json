@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "question1": {
+      "enum": ["yes", "no"],
+      "nullable": false,
+      "errorMessage": {
+        "nullable": "\"question1\" is not allowed to be empty",
+        "enum": "\"question1\" is not allowed to be nothing but yes or no"
+      }
+    },
+    "question2": {
+      "enum": ["yes", "no"],
+      "nullable": false,
+      "errorMessage": {
+        "nullable": "\"question2\" is not allowed to be empty",
+        "enum": "\"question2\" is not allowed to be nothing but 'yes' or 'no'"
+      }
+    },
+    "question3": {
+      "enum": ["yes", "no", "idk", "now"],
+      "nullable": false,
+      "errorMessage": {
+        "nullable": "\"question3\" is not allowed to be empty",
+        "enum": "\"question3\" is not allowed to be nothing but 'yes', 'no', 'idk' or 'now'"
+      }
+    },
+    "question4": {
+      "type": "string",
+      "nullable": false,
+      "minLength": 15,
+      "maxLength": 200,
+      "errorMessage": {
+        "nullable": "\"question4\" is not allowed to be empty",
+        "minLength": "\"question4\" is not allowed to have less than 15 characters",
+        "maxLength": "\"question4\" is not allowed to have more than 200 characters"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": ["question1", "question2", "question3", "question4"],
+  "errorMessage": {
+    "required": {
+      "question1": "\"question1\" is required",
+      "question2": "\"question2\" is required",
+      "question3": "\"question2\" is required",
+      "question4": "\"question2\" is required"
+    }
+  }
+}
