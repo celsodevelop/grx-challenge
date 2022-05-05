@@ -1,11 +1,13 @@
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import AppRoutes from './routes/AppRoutes';
 
-function App() {
-  return (
-    <div>
-      GRX Challenge Front-end
-    </div>
-  );
-}
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <AppRoutes />
+  </QueryClientProvider>
+);
 
 export default App;
