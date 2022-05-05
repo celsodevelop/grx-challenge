@@ -1,0 +1,16 @@
+/*.js
+node_modules
+react_client
+dist
+.editorconfig
+tsconfig.json
+package*.json
+.prettierrc
+.prettierignore
+docker-compose.yml
+Dockerfile
+tsconfig*.json
+.env
+.eslintrc.json
+.eslintignore
+errorMessages.json
