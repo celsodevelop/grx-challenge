@@ -1,8 +1,7 @@
 import { open } from 'fs/promises';
 import errorMessages from '../errors/errorMessages.json';
 import errorHandler from '../errors/errorHandler';
-
-const DATA_STORAGE_PATH = 'data/answers.txt';
+import { DATA_STORAGE_PATH } from '../constants/config';
 
 const fileConnection = async (flag: string) => {
   try {

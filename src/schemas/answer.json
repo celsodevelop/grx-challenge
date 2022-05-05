@@ -37,8 +37,8 @@
     "required": {
       "question1": "\"question1\" is required",
       "question2": "\"question2\" is required",
-      "question3": "\"question2\" is required",
-      "question4": "\"question2\" is required"
+      "question3": "\"question3\" is required",
+      "question4": "\"question4\" is required"
     }
   }
 }

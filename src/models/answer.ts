@@ -1,14 +1,14 @@
 import { FileHandle } from 'fs/promises';
-import { Answer } from '../types';
-import fileConnection from './connection';
+import { UserAnswers } from '../types';
+import fileConnection from './fileConnection';
 
-const createAnswer = async (newData: Answer) => {
+const createAnswer = async (newData: UserAnswers) => {
   // Abre o arquivo modo append com criação de arquivo [flag: 'a+']
   const answersFile = (await fileConnection('a+')) as FileHandle;
   const oldAnswers = await answersFile.readFile({ encoding: 'utf-8' });
 
   // Recupera conteúdo antigo do arquivo
-  const oldContent = oldAnswers && (JSON.parse(oldAnswers) as Answer[]);
+  const oldContent = oldAnswers && (JSON.parse(oldAnswers) as UserAnswers[]);
   try {
     // Caso primeira vez, cria o arquivo com as respostas
 

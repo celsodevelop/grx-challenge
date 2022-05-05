@@ -3,7 +3,7 @@ import ajvErrors from 'ajv-errors';
 import answerSchema from './answer.json';
 
 const ajv = new Ajv({ allErrors: true });
-ajvErrors(ajv);
+ajvErrors(ajv); // Adiciona suporte a erros personalizados
 
 ajv.addSchema(answerSchema, 'answer');
 

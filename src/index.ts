@@ -1,15 +1,16 @@
 import express, { NextFunction, Request, RequestHandler, Response } from 'express';
 import bodyParser from 'body-parser';
 import cors, { CorsOptions } from 'cors';
-import startServer from './bin';
+import startServer from './bin/server';
 import routes from './routes';
 import errorMiddleware from './errors/errorMiddleware';
+import { CLIENT_ADDRESS } from './constants/config';
 
 const app = express();
 
 // CORS
 
-const allowedOrigins = ['http://localhost:3000']; // endereço do cliente react
+const allowedOrigins = [CLIENT_ADDRESS]; // endereço do cliente react
 const corsOpts: cors.CorsOptions = {
   origin: allowedOrigins,
 };

@@ -1,4 +1,7 @@
 {
   "INTERNAL_ERROR": "Sorry, An Internal error have been occurred.",
-  "FILE_OPEN_ERROR": "Error when open file."
+  "INVALID_ANSWER": "We have detected an invalid answer. Please try again or contact support",
+  "FILE_OPEN_ERROR": "Error when open file.",
+  "UNHANDLED_REJECTION": "There was an unhandled rejection",
+  "UNCAUGHT_EXCEPTION": "There was an uncaught error"
 }
