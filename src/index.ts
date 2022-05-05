@@ -1,16 +1,42 @@
-import express from 'express';
-import { StatusCodes } from 'http-status-codes';
+import express, { NextFunction, Request, RequestHandler, Response } from 'express';
+import bodyParser from 'body-parser';
+import cors, { CorsOptions } from 'cors';
+import startServer from './bin/server';
+import routes from './routes';
+import errorMiddleware from './errors/errorMiddleware';
+import { CLIENT_ADDRESS } from './constants/config';
 
 const app = express();
 
-app.use(express.json());
+// CORS
 
-const PORT = process.env.SRV_PORT || 5000;
+const allowedOrigins = [CLIENT_ADDRESS]; // endereço do cliente react
+const corsOpts: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
+app.use((cors as (opt: CorsOptions) => RequestHandler)(corsOpts));
 
-app.get('/', (req, res) => {
-  res.status(StatusCodes.OK).send('GRX Back-end Challenge');
+// SETUP
+
+app.use((_req: Request, res: Response, next: NextFunction) => {
+  // Evita ataques de enumeração para extrair informações,
+  // escondendo 'Express 4.18.1' do header das responses
+
+  res.header('X-powered-by', 'Sweat, and tears.');
+  next();
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running at port:${PORT}`);
-});
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// ROUTES
+
+app.use('/answer', routes.answer);
+
+// ERROR MIDDLEWARE
+
+app.use(errorMiddleware);
+
+// START LISTEN SERVER
+
+startServer(app);
