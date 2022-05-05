@@ -1,0 +1,30 @@
+{
+  "question1": {
+    "positives": {
+      "yes": 1
+    },
+    "negatives": {
+      "no": 1
+    }
+  },
+  "question2": {
+    "positives": {
+      "yes": 1
+    },
+    "negatives": {
+      "no": 1
+    }
+  },
+  "question3": {
+    "positives": {
+      "yes": 1,
+      "now": 2
+    },
+    "negatives": {
+      "no": 1
+    },
+    "not_avaliated": {
+      "idk": 1
+    }
+  }
+}
