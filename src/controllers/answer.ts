@@ -1,21 +1,19 @@
 import { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import createAnswerSvc from '../services/answer';
-import { Answer } from '../types';
+import { UserAnswers } from '../types';
 
 const createAnswerCtrl: RequestHandler = (async (req, res, next) => {
-  const { question1, question2, question3, question4 } = req.body as Answer;
+  // Pode haver melhoria para desestruturação dinâmica, mas deve-se lembrar
+  // da segurança do código contra ataques de Injection
+  const { question1, question2, question3, question4 } = req.body as UserAnswers;
+  const answers = { question1, question2, question3, question4 };
+  // Bloco try-catch trata todos os erros throw
   try {
-    await createAnswerSvc({
-      question1,
-      question2,
-      question3,
-      question4,
-    });
-    return res
-      .status(StatusCodes.OK)
-      .json({ message: 'Suas respostas foram armazenadas com sucesso!' });
+    const statistics = await createAnswerSvc(answers);
+    return res.status(StatusCodes.CREATED).json(statistics);
   } catch (error) {
+    // Importante para encaminhar os erros internos para o middleware de erro
     return next(error);
   }
 }) as RequestHandler;
