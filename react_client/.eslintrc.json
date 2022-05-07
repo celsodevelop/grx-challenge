@@ -14,7 +14,6 @@
     "plugin:react-hooks/recommended",
     "plugin:react/recommended",
     "plugin:jest/recommended",
-    "plugin:prettier/recommended",
     "airbnb",
     "airbnb-typescript"
   ],
@@ -33,8 +32,8 @@
       "sonarjs",
       "react-hooks",
       "react",
-      "prettier",
-      "react-func"
+      "react-func",
+      "prettier"
     ],
     "overrides": [
     {
@@ -48,7 +47,7 @@
   ],
   "rules": {
     "curly": ["error", "all"],
-    "indent": ["error", 2],
+    "indent": "off",
     "linebreak-style": 0,
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
@@ -187,6 +186,19 @@
     "react-func/max-combined-conditions": ["error", 1],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": {
+          "arguments": false,
+          "attributes": false
+        }
+      }
+    ],
+    "@typescript-eslint/indent": ["error", 2, {
+       "flatTernaryExpressions": true,
+       "offsetTernaryExpressions": false
+    }],
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "react/style-prop-object": 0
   }
