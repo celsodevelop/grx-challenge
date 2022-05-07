@@ -1,0 +1,33 @@
+{
+  "questions": {
+    "question1": {
+      "statement": "Você se considera bom em lógica?",
+      "type": "radio",
+      "answers": ["yes", "no"],
+      "error": "Por favor clique em uma das opções"
+    },
+    "question2": {
+      "statement": "Gosta de aprender com desafios?",
+      "type": "radio",
+      "answers": ["yes", "no"],
+      "error": "Por favor clique em uma das opções"
+    },
+    "question3": {
+      "statement": "Gostaria de fazer parte da GRX?",
+      "type": "select",
+      "answers": ["yes", "no", "idk", "now"],
+      "error": "Por favor selecione uma das opções"
+    },
+    "question4": {
+      "statement": "Por favor justifique a resposta anterior",
+      "type": "textarea",
+      "error": "Por favor escreva sua justificativa"
+    }
+  },
+  "answers": {
+    "yes": "Sim",
+    "no": "Não",
+    "idk": "Não sei",
+    "now": "Agora!!"
+  }
+}
