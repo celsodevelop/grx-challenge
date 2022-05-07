@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FieldError, RegisterOptions, UseFormRegisterReturn } from 'react-hook-form';
-import surveyJSON from '../constants/survey.json';
 import { AcceptedAnswers, InferPropTypes, SurveyData } from '../types/types';
 
 interface Props
   extends InferPropTypes<typeof CustomRadioPropTypes, typeof CustomRadioDefaultProps> {
-  answers?: Array<AcceptedAnswers>;
+  answers: Array<AcceptedAnswers>;
   statement: string;
   id: keyof SurveyData;
   register: (name: keyof SurveyData, options?: RegisterOptions) => UseFormRegisterReturn;
+  answersLabels: {
+    [key in AcceptedAnswers]: string
+  }
   error?: FieldError;
 }
 
@@ -19,7 +21,14 @@ type CustomRadioType = {
   (...args: Props[]): React.ReactElement;
 };
 
-const CustomRadio: CustomRadioType = ({ id, statement, answers, error, register }) => {
+const CustomRadio: CustomRadioType = ({
+  id,
+  statement,
+  answers,
+  error,
+  register,
+  answersLabels,
+}) => {
   const renderAnswers = (answer: AcceptedAnswers) => (
     <label
       key={`${id}-${answer}`}
@@ -27,7 +36,7 @@ const CustomRadio: CustomRadioType = ({ id, statement, answers, error, register 
       className={`button ${error?.type ? 'is-danger' : 'is-sucess'}`}
       style={{ width: '300px' }}
     >
-      {surveyJSON.answers[answer]}
+      {answersLabels[answer]}
       <input
         {...register(id)}
         style={{ display: 'none' }}
@@ -69,7 +78,8 @@ const CustomRadioPropTypes = {
   }),
   id: PropTypes.string.isRequired,
   statement: PropTypes.string.isRequired,
-  answers: PropTypes.arrayOf(PropTypes.string.isRequired),
+  answers: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  answersLabels: PropTypes.objectOf(PropTypes.string).isRequired,
   register: PropTypes.func.isRequired,
 };
 
@@ -77,7 +87,6 @@ const CustomRadioDefaultProps = {
   error: {
     type: '',
   },
-  answers: [],
 };
 
 CustomRadio.propTypes = CustomRadioPropTypes;

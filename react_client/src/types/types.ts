@@ -30,6 +30,8 @@ export type Questions = {
   [questionNumber in keyof SurveyData]: ValidQuestion;
 };
 
+export interface ValidRadioQuestion extends ValidQuestion { answers: AcceptedAnswers[] }
+
 export type ValidQuestion = {
   statement: string;
   answers?: Array<AcceptedAnswers>;
