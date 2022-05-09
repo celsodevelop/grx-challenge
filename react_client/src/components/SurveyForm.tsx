@@ -6,16 +6,16 @@ import {
   FormProvider,
   useForm,
 } from 'react-hook-form';
-import { UseMutationResult } from 'react-query';
+import { useIsMutating, UseMutationResult } from 'react-query';
 
 import schema from '../constants/validation';
 import {
   SurveyData,
   SurveyJSON,
-  extractKeysFromObject,
   SuccessResponse,
   ErrorResponse,
 } from '../types/types';
+import { extractKeysFromObject } from '../utils/utils';
 import QuestionMapper from './QuestionMapper';
 
 type SurveyFormProps = {
@@ -28,6 +28,7 @@ const SurveyForm: FunctionComponent<SurveyFormProps> = ({ survey, postAnswers })
   const methods = useForm<SurveyData>({
     resolver: yupResolver(schema),
   });
+  const isLoading = useIsMutating();
   const { handleSubmit, reset } = methods;
   const { questions, answers: answersLabels, survey: surveyTitle } = survey;
 
@@ -63,7 +64,7 @@ const SurveyForm: FunctionComponent<SurveyFormProps> = ({ survey, postAnswers })
         <input
           type="submit"
           className={`button is-info is-large is-fullwidth ${
-            postAnswers.isLoading ? 'is-loading' : ''
+            isLoading ? 'is-loading' : ''
           }`}
           value="Enviar"
         />
