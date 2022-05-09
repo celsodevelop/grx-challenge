@@ -30,5 +30,10 @@
     "no": "Não",
     "idk": "Não sei",
     "now": "Agora!!"
+  },
+  "responses": {
+    "positives": "Positiva",
+    "negatives": "Negativa",
+    "not_avaliated": "Não Avaliada"
   }
 }
