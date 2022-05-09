@@ -18,6 +18,7 @@ export type SurveyData = {
 };
 
 export type SurveyJSON = {
+  survey: string;
   questions: Questions;
   answers: Answers;
 };

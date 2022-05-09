@@ -13,3 +13,4 @@ export const MAX_PROPERTY: [number, string] = [
   `Por favor, o texto deve ser menor que ${MAX_LENGTH} caracteres`,
 ];
 export const SELECT_OPTION_LABEL = 'Selecione uma opção';
+export const INVALID_QUESTION_MSG = 'Tipo de questão inválida, ver estrutura do JSON';
