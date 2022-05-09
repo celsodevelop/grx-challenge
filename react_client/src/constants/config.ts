@@ -15,3 +15,4 @@ export const MAX_PROPERTY: [number, string] = [
 ];
 export const SELECT_OPTION_LABEL = 'Selecione uma opção';
 export const INVALID_QUESTION_MSG = 'Tipo de questão inválida, ver estrutura do JSON';
+export const QUANTITY_WORD = 'Quantidade';
