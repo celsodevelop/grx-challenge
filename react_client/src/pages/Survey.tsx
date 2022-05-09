@@ -8,15 +8,18 @@ import { SuccessResponse, SurveyJSON } from '../types/types';
 
 const Survey = () => {
   const postAnswerMutation = usePostAnswers();
-  console.table(postAnswerMutation);
   const renderStatistics = (serverState: SuccessResponse) => {
+    const { responses } = surveyJSON as SurveyJSON;
     if (postAnswerMutation.error) {
       console.log(postAnswerMutation.error);
       return <p className="is-danger">Houve um erro ao processar a requisição</p>;
     }
     return (
       postAnswerMutation.data && (
-        <SurveyStatistics statistics={serverState} />
+        <SurveyStatistics
+          statistics={serverState}
+          responseLabels={responses}
+        />
       )
     );
   };
