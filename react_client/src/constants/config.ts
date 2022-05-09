@@ -1,3 +1,4 @@
+export const POST_ANSWERS_ENDPOINT = '/answer';
 export const Y_OR_N_SERVER_SIDE_VALUES = /yes|no/;
 export const Y_OR_N_IDK_NOW_SERVER_SIDE_VALUES = new RegExp(
   `${Y_OR_N_SERVER_SIDE_VALUES.source}|${/idk|now/.source}`,
