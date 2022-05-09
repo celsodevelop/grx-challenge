@@ -16,23 +16,20 @@ const QuestionMapper: FunctionComponent<QuestionMapperProps> = ({
   answersLabels,
   questionKey,
 }) => {
-  const structureAlert = <p className="is-danger is-size-2">{INVALID_QUESTION_MSG}</p>;
+  const helperMsg = <p className="is-danger is-size-2">{INVALID_QUESTION_MSG}</p>;
 
   switch (question.type) {
   case 'radio':
     return question?.answers ? (
       <CustomRadio
         id={questionKey}
-        // selected={watch(key) as AcceptedAnswers}
-        // control={control}
-        // error={errors[key]}
         key={questionKey}
         statement={question.statement}
         answers={question?.answers}
         answersLabels={answersLabels}
       />
     ) : (
-      structureAlert
+      helperMsg
     );
 
   case 'select':
@@ -45,7 +42,7 @@ const QuestionMapper: FunctionComponent<QuestionMapperProps> = ({
         answersLabels={answersLabels}
       />
     ) : (
-      structureAlert
+      helperMsg
     );
 
   case 'textarea':
@@ -57,7 +54,7 @@ const QuestionMapper: FunctionComponent<QuestionMapperProps> = ({
       />
     );
   default:
-    return structureAlert;
+    return helperMsg;
   }
 };
 
