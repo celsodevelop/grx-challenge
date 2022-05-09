@@ -23,6 +23,16 @@ export type SurveyJSON = {
   answers: Answers;
 };
 
+export type SuccessResponse = {
+  positives: number;
+  negatives: number;
+  not_avaliated: number;
+};
+
+export type ErrorResponse = {
+  message: string;
+};
+
 export type Answers = {
   [answer in AcceptedAnswers]: string;
 };
