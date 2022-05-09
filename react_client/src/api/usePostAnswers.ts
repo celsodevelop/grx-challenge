@@ -13,14 +13,9 @@ const REQUEST = {
 };
 
 const usePostAnswers = () => useMutation<SuccessResponse, ErrorResponse, SurveyData>(
-  async (answers) => {
-    const { data: dataAxiosResponse } = await axios.post<SuccessResponse>(
-      POST_ANSWERS_ENDPOINT,
-      answers,
-      REQUEST,
-    );
-    return dataAxiosResponse;
-  },
+  async (answers) => axios
+    .post<SuccessResponse>(POST_ANSWERS_ENDPOINT, answers, REQUEST)
+    .then((res) => res.data),
   {
     retry: RETRY,
     retryDelay: RETRY_DELAY,
