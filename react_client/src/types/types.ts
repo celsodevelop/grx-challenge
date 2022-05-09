@@ -21,6 +21,9 @@ export type SurveyJSON = {
   survey: string;
   questions: Questions;
   answers: Answers;
+  responses: {
+    [key in keyof SuccessResponse]: string
+  }
 };
 
 export type SuccessResponse = {
@@ -73,5 +76,3 @@ type ObjectKeys<T> = T extends object
 export interface ObjectConstructor {
   keys<T>(o: T): ObjectKeys<T>;
 }
-
-export const extractKeysFromObject = <T>(obj: T) => (<ObjectConstructor>Object).keys(obj);
