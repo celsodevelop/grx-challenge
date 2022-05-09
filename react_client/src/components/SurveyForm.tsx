@@ -6,29 +6,33 @@ import {
   FormProvider,
   useForm,
 } from 'react-hook-form';
+import { UseMutationResult } from 'react-query';
 
 import schema from '../constants/validation';
 import {
   SurveyData,
   SurveyJSON,
   extractKeysFromObject,
+  SuccessResponse,
+  ErrorResponse,
 } from '../types/types';
 import QuestionMapper from './QuestionMapper';
 
 type SurveyFormProps = {
   survey: SurveyJSON;
+  postAnswers: UseMutationResult<SuccessResponse, ErrorResponse, SurveyData>;
 };
 type ResetHandler = { target: { reset: () => void } };
 
-const SurveyForm: FunctionComponent<SurveyFormProps> = ({ survey }) => {
+const SurveyForm: FunctionComponent<SurveyFormProps> = ({ survey, postAnswers }) => {
   const methods = useForm<SurveyData>({
     resolver: yupResolver(schema),
   });
   const { handleSubmit, reset } = methods;
   const { questions, answers: answersLabels, survey: surveyTitle } = survey;
 
-  const onValid: SubmitHandler<SurveyData> = (data, e) => {
-    console.log(data);
+  const onValid: SubmitHandler<SurveyData> = (userAnswers, e) => {
+    postAnswers.mutate(userAnswers);
     reset();
     (e as ResetHandler)?.target?.reset(); // Necessário para reset do select e textarea
   };
@@ -58,7 +62,9 @@ const SurveyForm: FunctionComponent<SurveyFormProps> = ({ survey }) => {
         {renderAllQuestions()}
         <input
           type="submit"
-          className="button is-info is-large is-fullwidth"
+          className={`button is-info is-large is-fullwidth ${
+            postAnswers.isLoading ? 'is-loading' : ''
+          }`}
           value="Enviar"
         />
       </form>
