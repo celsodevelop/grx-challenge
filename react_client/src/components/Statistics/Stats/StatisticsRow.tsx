@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { QUANTITY_WORD } from '../constants/config';
-import { formatAsPercent } from '../utils/utils';
+import { QUANTITY_WORD } from '../../../constants/config';
+import { formatAsPercent } from '../../../utils/utils';
 import StatisticsItem from './StatisticsItem';
 
 type StatisticsRowProps = {

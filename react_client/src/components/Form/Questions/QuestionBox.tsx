@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { SurveyData } from '../types/types';
+import { SurveyData } from '../../../types/types';
 
 type QuestionBoxProps = {
   id: keyof SurveyData;

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
-import { InferPropTypes, SurveyData } from '../types/types';
-import QuestionBox from './QuestionBox';
+import { InferPropTypes, SurveyData } from '../../../types/types';
+import QuestionBox from '../Questions/QuestionBox';
 
 interface Props extends InferPropTypes<typeof CustomTextAreaPropTypes> {
   statement: string;

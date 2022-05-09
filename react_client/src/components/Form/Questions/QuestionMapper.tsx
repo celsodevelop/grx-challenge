@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
-import { INVALID_QUESTION_MSG } from '../constants/config';
-import { Answers, SurveyData, ValidQuestion } from '../types/types';
-import CustomRadio from './CustomRadio';
-import CustomSelect from './CustomSelect';
-import CustomTextArea from './CustomTextArea';
+import { INVALID_QUESTION_MSG } from '../../../constants/config';
+import { Answers, SurveyData, ValidQuestion } from '../../../types/types';
+import CustomRadio from '../Inputs/CustomRadio';
+import CustomSelect from '../Inputs/CustomSelect';
+import CustomTextArea from '../Inputs/CustomTextArea';
 
 type QuestionMapperProps = {
   questionKey: keyof SurveyData;

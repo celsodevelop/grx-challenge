@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useController, useFormContext } from 'react-hook-form';
-import { AcceptedAnswers, InferPropTypes, SurveyData } from '../types/types';
-import QuestionBox from './QuestionBox';
+import { AcceptedAnswers, InferPropTypes, SurveyData } from '../../../types/types';
+import QuestionBox from '../Questions/QuestionBox';
 
 interface Props extends InferPropTypes<typeof CustomRadioPropTypes> {
   answers: Array<AcceptedAnswers>;

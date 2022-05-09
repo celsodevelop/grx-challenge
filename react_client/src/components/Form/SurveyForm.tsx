@@ -8,15 +8,15 @@ import {
 } from 'react-hook-form';
 import { useIsMutating, UseMutationResult } from 'react-query';
 
-import schema from '../constants/validation';
+import schema from '../../constants/validation';
 import {
   SurveyData,
   SurveyJSON,
   SuccessResponse,
   ErrorResponse,
-} from '../types/types';
-import { extractKeysFromObject } from '../utils/utils';
-import QuestionMapper from './QuestionMapper';
+} from '../../types/types';
+import { extractKeysFromObject } from '../../utils/utils';
+import QuestionMapper from './Questions/QuestionMapper';
 
 type SurveyFormProps = {
   survey: SurveyJSON;

@@ -1,8 +1,8 @@
 import React from 'react';
 import usePostAnswers from '../api/usePostAnswers';
 import HeroLayout from '../components/HeroLayout';
-import SurveyForm from '../components/SurveyForm';
-import SurveyStatistics from '../components/SurveyStatistics';
+import SurveyForm from '../components/Form/SurveyForm';
+import SurveyStatistics from '../components/Statistics/SurveyStatistics';
 import surveyJSON from '../constants/survey.json';
 import { SuccessResponse, SurveyJSON } from '../types/types';
 

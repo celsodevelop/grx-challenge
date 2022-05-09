@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
-import { AcceptedAnswers, Answers, InferPropTypes, SurveyData } from '../types/types';
-import { SELECT_OPTION_LABEL } from '../constants/config';
-import QuestionBox from './QuestionBox';
+import {
+  AcceptedAnswers,
+  Answers,
+  InferPropTypes,
+  SurveyData,
+} from '../../../types/types';
+import { SELECT_OPTION_LABEL } from '../../../constants/config';
+import QuestionBox from '../Questions/QuestionBox';
 
 interface Props extends InferPropTypes<typeof CustomSelectPropTypes> {
   answers: Array<AcceptedAnswers>;

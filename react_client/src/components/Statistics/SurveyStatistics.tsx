@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { SuccessResponse, SurveyJSON } from '../types/types';
-import { extractKeysFromObject } from '../utils/utils';
-import StatisticsItem from './StatisticsItem';
-import StatisticsRow from './StatisticsRow';
+import { SuccessResponse, SurveyJSON } from '../../types/types';
+import { extractKeysFromObject } from '../../utils/utils';
+import StatisticsItem from './Stats/StatisticsItem';
+import StatisticsRow from './Stats/StatisticsRow';
 
 type SurveyStatisticsProps = {
   statistics: SuccessResponse;
