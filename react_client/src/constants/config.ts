@@ -16,3 +16,6 @@ export const MAX_PROPERTY: [number, string] = [
 export const SELECT_OPTION_LABEL = 'Selecione uma opção';
 export const INVALID_QUESTION_MSG = 'Tipo de questão inválida, ver estrutura do JSON';
 export const QUANTITY_WORD = 'Quantidade';
+export const SEND_WORD = 'Enviar';
+export const RESET_WORD = 'Responder Novamente';
+export const SEND_SURVEY_ERROR_MSG = 'Houve um erro ao processar a requisição';
