@@ -23,12 +23,12 @@ const CustomRadio: CustomRadioType = ({ id, statement, answers, answersLabels })
 
   const {
     field: { onChange },
-  } = useController({ name: id, control });
+  } = useController({ name: id, control, defaultValue: '' });
   const selectedAnswer = watch(id);
 
   const renderButtonOption = (answer: AcceptedAnswers) => (
     <div className="control is-expanded" key={`${id}-${answer}`}>
-      <button
+      <input
         onClick={() => {
           onChange(answer);
         }}
@@ -36,9 +36,8 @@ const CustomRadio: CustomRadioType = ({ id, statement, answers, answersLabels })
           selectedAnswer === answer ? 'is-focused is-primary' : ''
         }`}
         type="button"
-      >
-        {answersLabels[answer]}
-      </button>
+        value={answersLabels[answer]}
+      />
     </div>
   );
 
