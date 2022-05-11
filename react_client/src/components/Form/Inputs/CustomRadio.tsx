@@ -4,7 +4,6 @@ import { useController } from 'react-hook-form';
 import { AcceptedAnswers, InferPropTypes, SurveyData } from '../../../types/types';
 import QuestionBox from '../Questions/QuestionBox';
 import useSurveyFormCtx from '../../../hooks/useSurveyForm';
-import { useNewSurveyFlag } from '../../../context/NewSurveyFlagContext';
 
 interface Props extends InferPropTypes<typeof CustomRadioPropTypes> {
   answers: Array<AcceptedAnswers>;
@@ -26,8 +25,7 @@ const CustomRadio: CustomRadioType = ({
   answers,
   answersLabels,
 }) => {
-  const { newSurvey } = useNewSurveyFlag();
-  const { control, watch } = useSurveyFormCtx({ newSurvey });
+  const { control, watch } = useSurveyFormCtx();
 
   const {
     field: { onChange },

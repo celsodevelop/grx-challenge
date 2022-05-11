@@ -9,7 +9,6 @@ import {
 import { SELECT_OPTION_LABEL } from '../../../constants/config';
 import QuestionBox from '../Questions/QuestionBox';
 import useSurveyFormCtx from '../../../hooks/useSurveyForm';
-import { useNewSurveyFlag } from '../../../context/NewSurveyFlagContext';
 
 interface Props extends InferPropTypes<typeof CustomSelectPropTypes> {
   answers: Array<AcceptedAnswers>;
@@ -29,8 +28,7 @@ const CustomSelect: CustomSelectType = ({
   answers,
   answersLabels,
 }) => {
-  const { newSurvey } = useNewSurveyFlag();
-  const { register } = useSurveyFormCtx({ newSurvey });
+  const { register } = useSurveyFormCtx();
   const renderSelectOption = (answer: AcceptedAnswers) => {
     const answerJSON = answersLabels[answer];
     return (

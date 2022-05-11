@@ -4,7 +4,6 @@ import { InferPropTypes, SurveyData } from '../../../types/types';
 import QuestionBox from '../Questions/QuestionBox';
 import { MAX_LENGTH, MIN_LENGTH } from '../../../constants/config';
 import useSurveyFormCtx from '../../../hooks/useSurveyForm';
-import { useNewSurveyFlag } from '../../../context/NewSurveyFlagContext';
 
 interface Props extends InferPropTypes<typeof CustomTextAreaPropTypes> {
   statement: string;
@@ -17,8 +16,7 @@ type CustomTextAreaType = {
 };
 
 const CustomTextArea: CustomTextAreaType = ({ id, statement }) => {
-  const { newSurvey } = useNewSurveyFlag();
-  const { register, watch } = useSurveyFormCtx({ newSurvey });
+  const { register, watch } = useSurveyFormCtx();
   const textLength = watch(id)?.length || 0;
   const isValidLength = textLength >= MIN_LENGTH && textLength <= MAX_LENGTH;
 

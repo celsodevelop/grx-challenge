@@ -25,7 +25,7 @@ const SurveyForm: FunctionComponent<SurveyFormProps> = ({ survey, postAnswers })
   const {
     handleSubmit,
     formState: { errors },
-  } = useSurveyFormCtx({ newSurvey });
+  } = useSurveyFormCtx();
 
   const onValid: SubmitHandler<SurveyData> = async (userAnswers) => {
     postAnswers.reset();
