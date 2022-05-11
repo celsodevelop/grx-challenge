@@ -19,3 +19,9 @@ export const QUANTITY_WORD = 'Quantidade';
 export const SEND_WORD = 'Enviar';
 export const RESET_WORD = 'Responder Novamente';
 export const SEND_SURVEY_ERROR_MSG = 'Houve um erro ao processar a requisição';
+export const FORM_DEFAULT_VALUES = {
+  question1: '',
+  question2: '',
+  question3: 'default',
+  question4: '',
+} as const;
