@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 type ClassifiedAnswers = 'yes' | 'no';
 type NotAvaliatedAnswers = 'idk';
 type ExtraPositiveAnswers = 'now';
+type FormDefaultValues = {
+  question1: '',
+  question2: '',
+  question3: 'default',
+  question4: '',
+};
 
 export type AcceptedAnswersTypes = 'radio' | 'select' | 'textarea';
 export type AcceptedAnswers =
@@ -15,7 +21,7 @@ export type SurveyData = {
   question2: ClassifiedAnswers;
   question3: ClassifiedAnswers | NotAvaliatedAnswers | ExtraPositiveAnswers;
   question4: string;
-};
+} | FormDefaultValues;
 
 export type SurveyJSON = {
   survey: string;
