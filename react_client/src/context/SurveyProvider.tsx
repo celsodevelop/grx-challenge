@@ -19,8 +19,8 @@ const SurveyProvider: FunctionComponent<SurveyProviderProps> = ({ children }) =>
     defaultValues: FORM_DEFAULT_VALUES,
   });
   const memoizedMethods = useMemo(
-    () => ({ ...methods }),
-    [{ ...methods }],
+    () => methods,
+    [methods],
   );
   return <FormProvider {...memoizedMethods}>{children}</FormProvider>;
 };

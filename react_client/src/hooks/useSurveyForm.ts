@@ -30,7 +30,7 @@ const useSurveyFormCtx = ({ newSurvey }: { newSurvey: boolean }) => {
         keepIsSubmitted: true,
       });
     }
-  }, [isSubmitSuccessful, newSurvey, isSubmitted]);
+  }, [isSubmitSuccessful, newSurvey, isSubmitted, resetAPI, reset]);
   return {
     ...formMethods,
     reset,
