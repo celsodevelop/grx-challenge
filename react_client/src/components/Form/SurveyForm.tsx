@@ -1,6 +1,7 @@
-import React, { Dispatch, FunctionComponent, SetStateAction } from 'react';
+import React, { FunctionComponent } from 'react';
 import { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
 import { UseMutationResult } from 'react-query';
+import { useNewSurveyFlag } from '../../context/NewSurveyFlagContext';
 import useSurveyFormCtx from '../../hooks/useSurveyForm';
 
 import {
@@ -16,17 +17,11 @@ import QuestionMapper from './Questions/QuestionMapper';
 type SurveyFormProps = {
   survey: SurveyJSON;
   postAnswers: UseMutationResult<SuccessResponse, ErrorResponse, SurveyData>;
-  newSurvey: boolean;
-  setNewSurvey: Dispatch<SetStateAction<boolean>>;
 };
 
-const SurveyForm: FunctionComponent<SurveyFormProps> = ({
-  survey,
-  postAnswers,
-  newSurvey,
-  setNewSurvey,
-}) => {
+const SurveyForm: FunctionComponent<SurveyFormProps> = ({ survey, postAnswers }) => {
   const { questions, answers: answersLabels, survey: surveyTitle } = survey;
+  const { newSurvey, setNewSurvey } = useNewSurveyFlag();
   const {
     handleSubmit,
     formState: { errors },
@@ -46,7 +41,6 @@ const SurveyForm: FunctionComponent<SurveyFormProps> = ({
     return questionsKeys.map((questionKey) => (
       <QuestionMapper
         key={questionKey}
-        newSurvey={newSurvey}
         questionKey={questionKey}
         question={questions[questionKey]}
         answersLabels={answersLabels}
@@ -58,11 +52,10 @@ const SurveyForm: FunctionComponent<SurveyFormProps> = ({
     <form
       onSubmit={handleSubmit(onValid, onError)}
       className="column is-three-quarters"
-      autoComplete="off"
     >
       <p className="title">{surveyTitle}</p>
       {renderAllQuestions()}
-      <CustomSendOrResetBtn newSurvey={newSurvey} setNewSurvey={setNewSurvey} />
+      <CustomSendOrResetBtn />
     </form>
   );
 };

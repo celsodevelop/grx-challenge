@@ -1,4 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react';
+import { useNewSurveyFlag } from '../../../context/NewSurveyFlagContext';
 import useSurveyFormCtx from '../../../hooks/useSurveyForm';
 import { SurveyData } from '../../../types/types';
 
@@ -6,15 +7,14 @@ type QuestionBoxProps = {
   id: keyof SurveyData;
   statement: string;
   children: ReactNode;
-  newSurvey: boolean;
 };
 
 const QuestionBox: FunctionComponent<QuestionBoxProps> = ({
   id,
   statement,
   children,
-  newSurvey,
 }) => {
+  const { newSurvey } = useNewSurveyFlag();
   const {
     formState: { errors },
   } = useSurveyFormCtx({ newSurvey });

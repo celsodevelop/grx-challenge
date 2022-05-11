@@ -1,16 +1,10 @@
-import React, { Dispatch, FunctionComponent, SetStateAction } from 'react';
+import React, { FunctionComponent } from 'react';
 import { useIsMutating } from 'react-query';
 import { RESET_WORD, SEND_WORD } from '../../../constants/config';
+import { useNewSurveyFlag } from '../../../context/NewSurveyFlagContext';
 
-type CustomSendOrResetBtnProps = {
-  newSurvey: boolean;
-  setNewSurvey: Dispatch<SetStateAction<boolean>>;
-};
-
-const CustomSendOrResetBtn: FunctionComponent<CustomSendOrResetBtnProps> = ({
-  newSurvey,
-  setNewSurvey,
-}) => {
+const CustomSendOrResetBtn: FunctionComponent = () => {
+  const { newSurvey, setNewSurvey } = useNewSurveyFlag();
   const isSubmitting = useIsMutating();
   if (newSurvey === false) {
     return (

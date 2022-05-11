@@ -4,10 +4,10 @@ import { useController } from 'react-hook-form';
 import { AcceptedAnswers, InferPropTypes, SurveyData } from '../../../types/types';
 import QuestionBox from '../Questions/QuestionBox';
 import useSurveyFormCtx from '../../../hooks/useSurveyForm';
+import { useNewSurveyFlag } from '../../../context/NewSurveyFlagContext';
 
 interface Props extends InferPropTypes<typeof CustomRadioPropTypes> {
   answers: Array<AcceptedAnswers>;
-  newSurvey: boolean;
   statement: string;
   id: keyof SurveyData;
   answersLabels: {
@@ -25,8 +25,8 @@ const CustomRadio: CustomRadioType = ({
   statement,
   answers,
   answersLabels,
-  newSurvey,
 }) => {
+  const { newSurvey } = useNewSurveyFlag();
   const { control, watch } = useSurveyFormCtx({ newSurvey });
 
   const {
@@ -50,7 +50,7 @@ const CustomRadio: CustomRadioType = ({
   );
 
   return (
-    <QuestionBox newSurvey={newSurvey} id={id} statement={statement}>
+    <QuestionBox id={id} statement={statement}>
       {answers?.map((answer) => renderButtonOption(answer))}
     </QuestionBox>
   );
@@ -62,7 +62,6 @@ const CustomRadioPropTypes = {
   statement: PropTypes.string.isRequired,
   answers: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   answersLabels: PropTypes.objectOf(PropTypes.string).isRequired,
-  newSurvey: PropTypes.bool.isRequired,
 };
 
 CustomRadio.propTypes = CustomRadioPropTypes;
