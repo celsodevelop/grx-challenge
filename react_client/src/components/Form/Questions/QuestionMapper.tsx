@@ -9,12 +9,14 @@ type QuestionMapperProps = {
   questionKey: keyof SurveyData;
   question: ValidQuestion;
   answersLabels: Answers;
+  newSurvey: boolean;
 };
 
 const QuestionMapper: FunctionComponent<QuestionMapperProps> = ({
   question,
   answersLabels,
   questionKey,
+  newSurvey,
 }) => {
   const helperMsg = <p className="is-danger is-size-2">{INVALID_QUESTION_MSG}</p>;
 
@@ -22,6 +24,7 @@ const QuestionMapper: FunctionComponent<QuestionMapperProps> = ({
   case 'radio':
     return question?.answers ? (
       <CustomRadio
+        newSurvey={newSurvey}
         id={questionKey}
         key={questionKey}
         statement={question.statement}
@@ -35,6 +38,7 @@ const QuestionMapper: FunctionComponent<QuestionMapperProps> = ({
   case 'select':
     return question?.answers ? (
       <CustomSelect
+        newSurvey={newSurvey}
         id={questionKey}
         key={questionKey}
         statement={question.statement}
@@ -48,6 +52,7 @@ const QuestionMapper: FunctionComponent<QuestionMapperProps> = ({
   case 'textarea':
     return (
       <CustomTextArea
+        newSurvey={newSurvey}
         id={questionKey}
         key={questionKey}
         statement={question.statement}

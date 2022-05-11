@@ -1,21 +1,23 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { useFormContext } from 'react-hook-form';
+import useSurveyFormCtx from '../../../hooks/useSurveyForm';
 import { SurveyData } from '../../../types/types';
 
 type QuestionBoxProps = {
   id: keyof SurveyData;
   statement: string;
   children: ReactNode;
+  newSurvey: boolean;
 };
 
 const QuestionBox: FunctionComponent<QuestionBoxProps> = ({
   id,
   statement,
   children,
+  newSurvey,
 }) => {
   const {
     formState: { errors },
-  } = useFormContext<SurveyData>();
+  } = useSurveyFormCtx({ newSurvey });
   const questionNumber = Number(id.match(/\d+/)?.[0]) || 0;
 
   return (

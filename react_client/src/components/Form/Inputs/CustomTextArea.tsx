@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useFormContext } from 'react-hook-form';
 import { InferPropTypes, SurveyData } from '../../../types/types';
 import QuestionBox from '../Questions/QuestionBox';
 import { MAX_LENGTH, MIN_LENGTH } from '../../../constants/config';
+import useSurveyFormCtx from '../../../hooks/useSurveyForm';
 
 interface Props extends InferPropTypes<typeof CustomTextAreaPropTypes> {
   statement: string;
   id: keyof SurveyData;
+  newSurvey: boolean;
 }
 
 type CustomTextAreaType = {
@@ -15,13 +16,13 @@ type CustomTextAreaType = {
   (...args: Props[]): React.ReactElement;
 };
 
-const CustomTextArea: CustomTextAreaType = ({ id, statement }) => {
-  const { register, watch } = useFormContext<SurveyData>();
+const CustomTextArea: CustomTextAreaType = ({ id, statement, newSurvey }) => {
+  const { register, watch } = useSurveyFormCtx({ newSurvey });
   const textLength = watch(id)?.length || 0;
   const isValidLength = textLength >= MIN_LENGTH && textLength <= MAX_LENGTH;
 
   return (
-    <QuestionBox id={id} statement={statement}>
+    <QuestionBox newSurvey={newSurvey} id={id} statement={statement}>
       <div className="control is-expanded">
         <textarea
           {...register(id)}
@@ -46,6 +47,7 @@ const CustomTextArea: CustomTextAreaType = ({ id, statement }) => {
 const CustomTextAreaPropTypes = {
   id: PropTypes.string.isRequired,
   statement: PropTypes.string.isRequired,
+  newSurvey: PropTypes.bool.isRequired,
 };
 
 CustomTextArea.propTypes = CustomTextAreaPropTypes;

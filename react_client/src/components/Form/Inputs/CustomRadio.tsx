@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useController, useFormContext } from 'react-hook-form';
+import { useController } from 'react-hook-form';
 import { AcceptedAnswers, InferPropTypes, SurveyData } from '../../../types/types';
 import QuestionBox from '../Questions/QuestionBox';
+import useSurveyFormCtx from '../../../hooks/useSurveyForm';
 
 interface Props extends InferPropTypes<typeof CustomRadioPropTypes> {
   answers: Array<AcceptedAnswers>;
+  newSurvey: boolean;
   statement: string;
   id: keyof SurveyData;
   answersLabels: {
@@ -18,8 +20,14 @@ type CustomRadioType = {
   (...args: Props[]): React.ReactElement;
 };
 
-const CustomRadio: CustomRadioType = ({ id, statement, answers, answersLabels }) => {
-  const { control, watch } = useFormContext<SurveyData>();
+const CustomRadio: CustomRadioType = ({
+  id,
+  statement,
+  answers,
+  answersLabels,
+  newSurvey,
+}) => {
+  const { control, watch } = useSurveyFormCtx({ newSurvey });
 
   const {
     field: { onChange },
@@ -42,7 +50,7 @@ const CustomRadio: CustomRadioType = ({ id, statement, answers, answersLabels })
   );
 
   return (
-    <QuestionBox id={id} statement={statement}>
+    <QuestionBox newSurvey={newSurvey} id={id} statement={statement}>
       {answers?.map((answer) => renderButtonOption(answer))}
     </QuestionBox>
   );
@@ -54,6 +62,7 @@ const CustomRadioPropTypes = {
   statement: PropTypes.string.isRequired,
   answers: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   answersLabels: PropTypes.objectOf(PropTypes.string).isRequired,
+  newSurvey: PropTypes.bool.isRequired,
 };
 
 CustomRadio.propTypes = CustomRadioPropTypes;

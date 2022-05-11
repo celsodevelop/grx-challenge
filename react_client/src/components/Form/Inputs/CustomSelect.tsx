@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useFormContext } from 'react-hook-form';
 import {
   AcceptedAnswers,
   Answers,
@@ -9,11 +8,13 @@ import {
 } from '../../../types/types';
 import { SELECT_OPTION_LABEL } from '../../../constants/config';
 import QuestionBox from '../Questions/QuestionBox';
+import useSurveyFormCtx from '../../../hooks/useSurveyForm';
 
 interface Props extends InferPropTypes<typeof CustomSelectPropTypes> {
   answers: Array<AcceptedAnswers>;
   statement: string;
   id: keyof SurveyData;
+  newSurvey: boolean;
   answersLabels: Answers;
 }
 
@@ -22,8 +23,14 @@ type CustomSelectType = {
   (...args: Props[]): React.ReactElement;
 };
 
-const CustomSelect: CustomSelectType = ({ id, statement, answers, answersLabels }) => {
-  const { register } = useFormContext<SurveyData>();
+const CustomSelect: CustomSelectType = ({
+  id,
+  statement,
+  answers,
+  answersLabels,
+  newSurvey,
+}) => {
+  const { register } = useSurveyFormCtx({ newSurvey });
   const renderSelectOption = (answer: AcceptedAnswers) => {
     const answerJSON = answersLabels[answer];
     return (
@@ -34,7 +41,7 @@ const CustomSelect: CustomSelectType = ({ id, statement, answers, answersLabels 
   };
 
   return (
-    <QuestionBox id={id} statement={statement}>
+    <QuestionBox newSurvey={newSurvey} id={id} statement={statement}>
       <div className="control is-expanded">
         <div className="select is-fullwidth">
           <select {...register(id)} defaultValue="default">
@@ -56,6 +63,7 @@ const CustomSelectPropTypes = {
   statement: PropTypes.string.isRequired,
   answers: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   answersLabels: PropTypes.objectOf(PropTypes.string).isRequired,
+  newSurvey: PropTypes.bool.isRequired,
 };
 
 CustomSelect.propTypes = CustomSelectPropTypes;
